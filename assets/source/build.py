@@ -97,7 +97,11 @@ def make(shape="square", bg="light", layout="twoline", size=512):
     if reverse:
         cre, fit, bulb = white_silhouette(cre), white_silhouette(fit), white_silhouette(bulb)
 
-    pad = 0.16 if shape == "square" else 0.205  # circle needs more inset
+    # bulb-only icon: less padding so the glyph fills ~1.5× more area
+    if layout == "bulb":
+        pad = 0.04 if shape == "square" else 0.08
+    else:
+        pad = 0.16 if shape == "square" else 0.205  # circle needs more inset
     inner = S * (1 - 2 * pad)
     cx = S / 2
 
@@ -146,9 +150,10 @@ def export_pngs():
                     img = make(sh, bg, lay, size)
                     name = f"{lay}-{sh}-{bg}-{size}.png"
                     img.save(os.path.join(PNG_DIR, name))
-    # favicons / touch icons from the bulb
-    make("square", "light", "bulb", 256).save(os.path.join(PNG_DIR, "favicon-256.png"))
-    make("square", "light", "bulb", 64).save(os.path.join(PNG_DIR, "favicon-64.png"))
+    # favicons — blue tile (white bulb on gradient) is legible at any size
+    for px in (16, 32, 48, 64, 256):
+        make("square", "blue", "bulb", px).save(os.path.join(PNG_DIR, f"favicon-{px}.png"))
+    make("square", "blue", "bulb", 180).save(os.path.join(PNG_DIR, "favicon-180.png"))
     make("circle", "blue", "bulb", 512).save(os.path.join(PNG_DIR, "favicon-circle-512.png"))
     make("square", "blue", "bulb", 512).save(os.path.join(PNG_DIR, "apple-touch-512.png"))
     print("PNG exports written to", PNG_DIR)

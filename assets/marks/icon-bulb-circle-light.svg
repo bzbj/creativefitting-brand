@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="CreativeFitting"><defs><linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2CA0FF"/><stop offset="1" stop-color="#0E63C4"/></linearGradient><linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2091F7"/><stop offset="1" stop-color="#116BCA"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="#fff"/><circle cx="50" cy="50" r="49" fill="none" stroke="#E0E9F6" stroke-width="1.5"/><g transform="translate(11.000,20.020) scale(0.78)"><g fill="none" stroke="url(#blue)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M37 63 C 28 55 26 38 38 30 C 46 24.5 54 24.5 62 30 C 74 38 72 55 63 63 Z"/>
+  <path d="M41 63 L41 71 Q41 76 46 76 L54 76 Q59 76 59 71 L59 63"/>
+  <path d="M43 69.5 H57"/>
+  <path d="M50 15 V6"/><path d="M75 24 L81 18"/><path d="M25 24 L19 18"/>
+  <path d="M83 45 H92"/><path d="M17 45 H8"/>
+</g></g></svg>

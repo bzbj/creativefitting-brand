@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CreativeFitting — Brand Guidelines</title>
+<link rel="icon" href="assets/marks/bulb.svg" />
+<link rel="apple-touch-icon" href="assets/png/apple-touch-512.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#1A85EC;         /* brand mid blue */
+    --blue-bright:#2091F7;  /* gradient start */
+    --blue-deep:#116BCA;    /* gradient end   */
+    --blue-ink:#0A63C4;     /* shadow blue    */
+    --sky:#B7DDFE;          /* highlight      */
+    --ink:#14181F;
+    --slate:#5B6472;
+    --paper:#FFFFFF;
+    --mist:#F2F7FE;         /* cool tint bg   */
+    --line:#E4ECF6;
+    --grad:linear-gradient(125deg,#2CA0FF 0%,#1A85EC 45%,#0E63C4 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+  h1,h2,h3,.dfont{font-family:'Quicksand',sans-serif}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:600}
+  .stitle{font-size:34px;font-weight:600;letter-spacing:-.01em;margin-top:12px}
+  .lead{max-width:640px;margin-top:16px;color:var(--slate);font-size:17px;font-weight:400}
+  section{padding:92px 0}
+
+  /* HERO */
+  .hero{background:var(--grad);color:#fff;text-align:center;padding:118px 0 104px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% -10%,rgba(255,255,255,.22),transparent 60%);pointer-events:none}
+  .hero .badge{font-family:'Quicksand';font-weight:600;letter-spacing:.32em;text-transform:uppercase;font-size:12px;opacity:.9}
+  .hero img{width:min(560px,74vw);margin:26px auto 0;display:block;filter:brightness(0) invert(1)}
+  .hero p{margin-top:26px;color:#eaf3ff;font-weight:400;letter-spacing:.02em}
+  .hero .chip{display:inline-block;margin-top:30px;padding:9px 20px;border:1px solid rgba(255,255,255,.4);border-radius:100px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+
+  /* WORDMARK */
+  .mark-stage{margin-top:44px;border:1px solid var(--line);border-radius:20px;background:var(--paper);
+    box-shadow:0 30px 60px -46px rgba(20,80,180,.35);padding:80px 40px;display:flex;justify-content:center}
+  .mark-stage img{width:min(660px,80%)}
+  .mark-stage.dark{background:var(--grad);border:none}
+  .mark-stage.dark img{filter:brightness(0) invert(1)}
+  .two-up{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+  .two-up .mark-stage{margin-top:0;padding:54px 30px}
+  .two-up .mark-stage img{width:88%}
+
+  /* IDEA */
+  .idea{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;margin-top:52px}
+  .idea .bulbcard{background:var(--mist);border:1px solid var(--line);border-radius:24px;padding:56px;display:flex;justify-content:center}
+  .idea .bulbcard img{width:150px}
+  .idea h3{font-size:23px;font-weight:600;margin-bottom:10px}
+  .idea p{color:var(--slate);margin-bottom:18px}
+  .idea .note{font-size:14px;color:var(--blue);font-weight:600;letter-spacing:.02em}
+
+  /* PALETTE */
+  .sw-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:18px;margin-top:48px}
+  .sw{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .sw .chip{height:120px}
+  .sw .meta{padding:14px 16px}
+  .sw .n{font-weight:700;font-size:14px}
+  .sw .h{font-size:12px;color:var(--slate);letter-spacing:.06em;margin-top:2px;font-family:'Quicksand'}
+  .chip.grad{background:var(--grad)}
+  .chip.deep{background:var(--blue-ink)} .chip.sky{background:var(--sky)}
+  .chip.ink{background:var(--ink)} .chip.paper{background:var(--paper);border-bottom:1px solid var(--line)}
+
+  /* TYPE */
+  .type-card{margin-top:44px;border:1px solid var(--line);border-radius:20px;padding:44px;background:var(--mist)}
+  .type-card .big{font-family:'Quicksand';font-weight:600;font-size:64px;letter-spacing:-.01em;color:var(--blue)}
+  .type-card .row{display:flex;gap:26px;align-items:baseline;border-top:1px solid var(--line);padding:18px 0;margin-top:10px}
+  .type-card .row:first-of-type{border-top:none}
+  .type-card .w{width:120px;flex:none;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--slate);font-weight:700}
+  .type-card .spec{font-family:'Quicksand'}
+
+  /* CLEARSPACE / MINSIZE */
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+  .rules .card{border:1px solid var(--line);border-radius:20px;padding:40px;background:#fff}
+  .rules h3{font-size:18px;font-weight:600;margin-bottom:8px}
+  .rules p{color:var(--slate);font-size:15px}
+  .clearbox{margin-top:22px;position:relative;border:1px dashed #bcd3f0;border-radius:12px;padding:26px;display:flex;justify-content:center;background:var(--mist)}
+  .clearbox img{width:74%}
+  .minrow{margin-top:22px;display:flex;align-items:flex-end;gap:26px}
+  .minrow .mm{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .minrow .mm img{filter:none}
+  .minrow .mm span{font-size:11px;color:var(--slate);letter-spacing:.1em}
+
+  /* ADAPTIVE MARKS */
+  .adaptive{background:var(--mist)}
+  .arow{margin-top:40px}
+  .arow h3{font-family:'Quicksand';font-weight:600;font-size:16px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .arow h3 .tag{font-family:'Nunito';font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:#fff;border:1px solid var(--line);padding:3px 10px;border-radius:100px}
+  .icons{display:flex;flex-wrap:wrap;gap:22px}
+  .icons figure{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .icons img{width:118px;height:118px;border-radius:8px}
+  .icons figcaption{font-size:11px;color:var(--slate);letter-spacing:.08em;text-transform:uppercase}
+
+  /* DO / DONT */
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+  .dd .col{border:1px solid var(--line);border-radius:20px;padding:30px;background:#fff}
+  .dd .h{display:flex;align-items:center;gap:10px;font-family:'Quicksand';font-weight:600;font-size:17px;margin-bottom:14px}
+  .dd .badge{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px}
+  .dd .do .badge{background:#1FA971} .dd .no .badge{background:#E5484D}
+  .dd ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .dd li{position:relative;padding-left:22px;color:var(--slate);font-size:15px}
+  .dd li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--line)}
+  .dd .do li::before{background:#1FA971} .dd .no li::before{background:#E5484D}
+
+  footer{background:var(--ink);color:#95a0b2;text-align:center;padding:56px 0}
+  footer img{width:230px;filter:brightness(0) invert(1);opacity:.95}
+  footer .fine{margin-top:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  footer a{color:var(--sky);text-decoration:none}
+
+  @media(max-width:860px){
+    .idea,.sw-grid,.rules,.dd,.two-up{grid-template-columns:1fr}
+    .sw-grid{grid-template-columns:1fr 1fr}
+    .wrap{padding:0 22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="badge">Brand Guidelines</div>
+    <img src="assets/source/wordmark.svg" alt="CreativeFitting logo" />
+    <p>The official CreativeFitting wordmark &mdash; and a set of compact marks for square &amp; circular spaces.</p>
+    <span class="chip">Logo · Colour · Adaptive Icons</span>
+  </div>
+</header>
+
+<!-- THE WORDMARK -->
+<section id="wordmark">
+  <div class="wrap">
+    <div class="eyebrow">The Logo</div>
+    <h2 class="stitle">The primary wordmark</h2>
+    <p class="lead">A friendly, rounded geometric wordmark set in a left-to-right blue gradient. The dot of the
+      second <em>i</em> in “Fitting” is replaced by a lightbulb — the spark of a creative idea.</p>
+    <div class="mark-stage"><img src="assets/source/wordmark.svg" alt="CreativeFitting wordmark" /></div>
+    <div class="two-up">
+      <div class="mark-stage"><img src="assets/source/wordmark.svg" alt="on white" /></div>
+      <div class="mark-stage dark"><img src="assets/source/wordmark.svg" alt="reversed on blue" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE IDEA -->
+<section id="idea" style="background:var(--mist)">
+  <div class="wrap">
+    <div class="eyebrow">The Detail</div>
+    <h2 class="stitle">A lightbulb hidden in the name</h2>
+    <div class="idea">
+      <div class="bulbcard"><img src="assets/marks/bulb.svg" alt="lightbulb mark" /></div>
+      <div>
+        <h3>The signature element</h3>
+        <p>The bulb is the most distinctive, ownable part of the logo. Because a full wordmark is
+          8.75&nbsp;:&nbsp;1 — far too wide for an app icon, avatar, or favicon — the bulb steps forward as the
+          brand’s compact symbol.</p>
+        <p class="note">→ It anchors the adaptive square &amp; circle marks further down this page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section id="palette">
+  <div class="wrap">
+    <div class="eyebrow">The Palette</div>
+    <h2 class="stitle">Confident, optimistic blue</h2>
+    <div class="sw-grid">
+      <div class="sw"><div class="chip grad"></div><div class="meta"><div class="n">Brand Gradient</div><div class="h">#2091F7 → #116BCA</div></div></div>
+      <div class="sw"><div class="chip deep"></div><div class="meta"><div class="n">Deep</div><div class="h">#0A63C4</div></div></div>
+      <div class="sw"><div class="chip sky"></div><div class="meta"><div class="n">Sky</div><div class="h">#B7DDFE</div></div></div>
+      <div class="sw"><div class="chip ink"></div><div class="meta"><div class="n">Ink</div><div class="h">#14181F</div></div></div>
+      <div class="sw"><div class="chip paper"></div><div class="meta"><div class="n">Paper</div><div class="h">#FFFFFF</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="type" style="background:var(--mist)">
+  <div class="wrap">
+    <div class="eyebrow">The Voice</div>
+    <h2 class="stitle">A rounded geometric sans</h2>
+    <p class="lead">The wordmark’s soft, circular letterforms set the tone. For supporting text, pair with a
+      friendly humanist companion (this page uses <strong>Quicksand</strong> for display and <strong>Nunito</strong> for body).</p>
+    <div class="type-card">
+      <div class="big">CreativeFitting</div>
+      <div class="row"><div class="w">Display</div><div class="spec">Quicksand · Medium / SemiBold — headings &amp; the mark’s character</div></div>
+      <div class="row"><div class="w">Text</div><div class="spec" style="font-family:'Nunito'">Nunito · Regular / Bold — body copy, UI, captions</div></div>
+      <div class="row"><div class="w">Set</div><div class="spec">ABCDEFGHIJKLM · abcdefghijklm · 0123456789</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLEAR SPACE + MIN SIZE -->
+<section id="rules">
+  <div class="wrap">
+    <div class="eyebrow">The Craft</div>
+    <h2 class="stitle">Clear space &amp; minimum size</h2>
+    <div class="rules">
+      <div class="card">
+        <h3>Clear space</h3>
+        <p>Keep a margin of at least the height of the capital <strong>C</strong> free of other elements on every side.</p>
+        <div class="clearbox"><img src="assets/source/wordmark.svg" alt="clear space" /></div>
+      </div>
+      <div class="card">
+        <h3>Minimum size</h3>
+        <p>Don’t let the wordmark fall below <strong>120&nbsp;px</strong> / 32&nbsp;mm wide. Below that, switch to an
+          adaptive mark or the bulb.</p>
+        <div class="minrow">
+          <div class="mm"><img src="assets/png/favicon-256.png" width="96" alt="bulb 96"><span>96&nbsp;px</span></div>
+          <div class="mm"><img src="assets/png/favicon-256.png" width="64" alt="bulb 64"><span>64&nbsp;px</span></div>
+          <div class="mm"><img src="assets/png/favicon-64.png" width="32" alt="bulb 32"><span>32&nbsp;px</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADAPTIVE MARKS -->
+<section id="adaptive" class="adaptive">
+  <div class="wrap">
+    <div class="eyebrow">The Answer</div>
+    <h2 class="stitle">Adaptive marks for square &amp; circle</h2>
+    <p class="lead">Built entirely from the real logo artwork — same letterforms, same gradient — reflowed so the
+      brand stays legible and full in a square tile or a round avatar.</p>
+
+    <div class="arow">
+      <h3>Two-line wordmark <span class="tag">name, stacked</span></h3>
+      <div class="icons">
+        <figure><img src="assets/png/twoline-square-light-512.png" alt=""><figcaption>Square · Light</figcaption></figure>
+        <figure><img src="assets/png/twoline-circle-light-512.png" alt=""><figcaption>Circle · Light</figcaption></figure>
+        <figure><img src="assets/png/twoline-square-blue-512.png" alt=""><figcaption>Square · Blue</figcaption></figure>
+        <figure><img src="assets/png/twoline-circle-blue-512.png" alt=""><figcaption>Circle · Blue</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="arow">
+      <h3>Emblem <span class="tag">bulb + name</span></h3>
+      <div class="icons">
+        <figure><img src="assets/png/emblem-square-light-512.png" alt=""><figcaption>Square · Light</figcaption></figure>
+        <figure><img src="assets/png/emblem-circle-light-512.png" alt=""><figcaption>Circle · Light</figcaption></figure>
+        <figure><img src="assets/png/emblem-square-blue-512.png" alt=""><figcaption>Square · Blue</figcaption></figure>
+        <figure><img src="assets/png/emblem-circle-blue-512.png" alt=""><figcaption>Circle · Blue</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="arow">
+      <h3>Bulb icon <span class="tag">favicon / app</span></h3>
+      <div class="icons">
+        <figure><img src="assets/png/bulb-square-light-512.png" alt=""><figcaption>Square · Light</figcaption></figure>
+        <figure><img src="assets/png/bulb-circle-light-512.png" alt=""><figcaption>Circle · Light</figcaption></figure>
+        <figure><img src="assets/png/bulb-square-blue-512.png" alt=""><figcaption>Square · Blue</figcaption></figure>
+        <figure><img src="assets/png/bulb-circle-blue-512.png" alt=""><figcaption>Circle · Blue</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DONT -->
+<section id="dd">
+  <div class="wrap">
+    <div class="eyebrow">The Rules</div>
+    <h2 class="stitle">Do &amp; don’t</h2>
+    <div class="dd">
+      <div class="col do">
+        <div class="h"><span class="badge">✓</span> Do</div>
+        <ul>
+          <li>Use the wordmark on white or a quiet light ground.</li>
+          <li>Reverse to solid white on the brand blue.</li>
+          <li>Reach for an adaptive mark whenever the space is square or round.</li>
+          <li>Give it room — respect the clear space.</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <div class="h"><span class="badge">✕</span> Don’t</div>
+        <ul>
+          <li>Stretch, condense, or rotate the logo.</li>
+          <li>Recolour it or drop the gradient for a flat off-brand blue.</li>
+          <li>Add shadows, outlines, or squeeze it into a tight box.</li>
+          <li>Rebuild the bulb — use the supplied artwork.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/source/wordmark.svg" alt="CreativeFitting" />
+    <div class="fine">Brand Guidelines · 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

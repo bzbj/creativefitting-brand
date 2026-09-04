@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Compose square/circle adaptive marks from the real CreativeFitting artwork."""
 from PIL import Image, ImageDraw
+import math
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -18,8 +19,68 @@ WHITE  = (255, 255, 255)
 TINT   = (244, 248, 254)   # faint cool tint
 SS = 3  # supersample factor
 
-def crop(region):
-    return MASTER.crop(region)
+# The alternate wordmark restores two dots. Coordinates are taken from the
+# master SVG; each 4.039-unit dot matches its i stem and aligns with nearby
+# ascenders. The bulb continues to occupy the second i position in “Fitting”.
+SVG_VIEWBOX = (96.36, 366.36, 375.84, 42.72)
+I_DOTS = (
+    (232.785156, 373.164063, 2.019531),
+    (329.085938, 372.984375, 2.019531),
+)
+DOT_BLUE_A = (20, 144, 253)  # exact bright end from the i-stem SVG gradient
+DOT_BLUE_B = (10, 98, 194)   # exact deep end from the i-stem SVG gradient
+
+def crop(region, master=MASTER):
+    return master.crop(region)
+
+def dotted_i_master(master=MASTER):
+    """Return the raster master with two vector-matched, antialiased i dots."""
+    out = master.copy()
+    vx, vy, vw, vh = SVG_VIEWBOX
+    sx = master.width / vw
+    sy = master.height / vh
+    antialias = 4
+
+    for dot_x, dot_y, radius in I_DOTS:
+        x0 = (dot_x - radius - vx) * sx
+        y0 = (dot_y - radius - vy) * sy
+        x1 = (dot_x + radius - vx) * sx
+        y1 = (dot_y + radius - vy) * sy
+        left = math.floor(x0) - 1
+        top = math.floor(y0) - 1
+        right = math.ceil(x1) + 1
+        bottom = math.ceil(y1) + 1
+        width = right - left
+        height = bottom - top
+
+        mask_hi = Image.new("L", (width * antialias, height * antialias), 0)
+        md = ImageDraw.Draw(mask_hi)
+        md.ellipse(
+            [
+                (x0 - left) * antialias,
+                (y0 - top) * antialias,
+                (x1 - left) * antialias,
+                (y1 - top) * antialias,
+            ],
+            fill=255,
+        )
+        mask = mask_hi.resize((width, height), Image.LANCZOS)
+
+        dot = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+        pixels = dot.load()
+        span = max(1.0, x1 - x0)
+        for x in range(width):
+            t = min(1.0, max(0.0, (left + x - x0) / span))
+            colour = tuple(
+                int(round(a + (b - a) * t))
+                for a, b in zip(DOT_BLUE_A, DOT_BLUE_B)
+            )
+            for y in range(height):
+                pixels[x, y] = colour + (255,)
+        dot.putalpha(mask)
+        out.alpha_composite(dot, (left, top))
+
+    return out
 
 def white_silhouette(img):
     """Return a white version keeping the artwork's alpha (for reversed marks)."""
@@ -70,7 +131,7 @@ def fit_into(img, box_w, box_h):
 def paste_center(canvas, img, cx, cy):
     canvas.alpha_composite(img, (int(cx - img.width / 2), int(cy - img.height / 2)))
 
-def make(shape="square", bg="light", layout="twoline", size=512):
+def make(shape="square", bg="light", layout="twoline", size=512, master=MASTER):
     S = size * SS
     canvas = Image.new("RGBA", (S, S), (0, 0, 0, 0))
     # background
@@ -93,7 +154,7 @@ def make(shape="square", bg="light", layout="twoline", size=512):
         canvas.alpha_composite(edge)
 
     reverse = (bg != "light")
-    cre = crop(CRE); fit = crop(FIT); bulb = crop(BULB)
+    cre = crop(CRE, master); fit = crop(FIT, master); bulb = crop(BULB, master)
     if reverse:
         cre, fit, bulb = white_silhouette(cre), white_silhouette(fit), white_silhouette(bulb)
 
@@ -139,6 +200,8 @@ def make(shape="square", bg="light", layout="twoline", size=512):
 
 PNG_DIR = os.path.abspath(os.path.join(HERE, "..", "png"))
 MARK_DIR = os.path.abspath(os.path.join(HERE, "..", "marks"))
+ALTERNATE_DIR = os.path.abspath(os.path.join(HERE, "..", "alternate"))
+ALTERNATE_PNG_DIR = os.path.join(ALTERNATE_DIR, "png")
 
 def export_pngs():
     os.makedirs(PNG_DIR, exist_ok=True)
@@ -157,6 +220,20 @@ def export_pngs():
     make("circle", "blue", "bulb", 512).save(os.path.join(PNG_DIR, "favicon-circle-512.png"))
     make("square", "blue", "bulb", 512).save(os.path.join(PNG_DIR, "apple-touch-512.png"))
     print("PNG exports written to", PNG_DIR)
+
+def export_alternate_pngs():
+    """Export the complete text-bearing dotted-i adaptive family."""
+    os.makedirs(ALTERNATE_PNG_DIR, exist_ok=True)
+    dotted = dotted_i_master()
+    dotted.save(os.path.join(ALTERNATE_DIR, "wordmark-dotted-i.png"))
+    for layout in ["twoline", "emblem"]:
+        for shape in ["square", "circle"]:
+            for bg in ["light", "blue"]:
+                for size in (1024, 512):
+                    img = make(shape, bg, layout, size, master=dotted)
+                    name = f"{layout}-{shape}-{bg}-{size}.png"
+                    img.save(os.path.join(ALTERNATE_PNG_DIR, name))
+    print("Alternate PNG exports written to", ALTERNATE_PNG_DIR)
 
 def _defs_and_body():
     raw = open(os.path.join(HERE, "wordmark-raw.svg")).read()
@@ -187,6 +264,8 @@ if __name__ == "__main__":
         export_pngs()
     if "svg" in sys.argv:
         export_svgs()
+    if "alternate" in sys.argv:
+        export_alternate_pngs()
     if "review" in sys.argv:
         combos = [
             ("twoline", "square", "light"), ("twoline", "circle", "light"),

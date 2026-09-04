@@ -1,8 +1,8 @@
 # CreativeFitting — Brand Guidelines & Adaptive Marks
 
 A mini brand-guideline page for the **existing** CreativeFitting logo, approved
-**one-colour production variants**, a dotted-`i` alternate, and a set of
-**square / circle adaptive marks** derived from the master artwork.
+**one-colour production variants**, and two parallel adaptive families: the
+original dotless system plus a dotted-`i` alternative.
 
 > Open **`index.html`** in a browser (or view the deployed page) for the full guideline.
 
@@ -35,10 +35,23 @@ Each comes in **square + circle** and **light (blue-on-white) + blue (white-on-g
 | `wordmark-solid-white.svg` | Solid `#FFFFFF` | Knockout on dark solid backgrounds |
 | `wordmark-solid-black.svg` | Solid `#000000` | Monochrome reproduction |
 | `wordmark-dotted-i.svg` | Original gradient + two restored dots | Legibility-led alternate wordmark |
+| `wordmark-dotted-i-solid-{blue,white,black}.svg` | Dotted-i solid set | Alternative one-colour production |
 
 The dotted-`i` alternate restores the dot above the `i` in **Creative** and the
 first `i` in **Fitting**. The lightbulb, which occupies the second `i` position
 in **Fitting**, is unchanged.
+
+## Dotted-i alternative family
+
+The alternative mirrors every text-bearing format in the original system:
+
+- wide wordmark: gradient, transparent PNG, solid blue, solid white, and solid black;
+- two-line wordmark: square and circle, each on light and blue grounds;
+- emblem (hero bulb + two-line name): square and circle, each on light and blue grounds.
+
+Each adaptive PNG is supplied at **512 px and 1024 px**. The bulb-only compact
+mark contains no `i`, so it is intentionally shared by both families rather
+than duplicated. All original dotless assets remain in place and unchanged.
 
 ## File map
 ```
@@ -52,7 +65,12 @@ creativefitting-brand/
    │  └─ build_wordmark_variants.py   regenerates the solid + dotted-i SVG variants
    ├─ wordmarks/
    │  ├─ wordmark-solid-{blue,white,black}.svg
-   │  └─ wordmark-dotted-i.svg
+   │  ├─ wordmark-dotted-i.svg
+   │  └─ wordmark-dotted-i-solid-{blue,white,black}.svg
+   ├─ alternate/
+   │  ├─ wordmark-dotted-i.png
+   │  └─ png/
+   │     └─ {twoline,emblem}-{square,circle}-{light,blue}-{1024,512}.png
    ├─ marks/
    │  ├─ two-line.svg                 vector, "Creative / Fitting" stacked
    │  └─ bulb.svg                     vector, lightbulb only
@@ -74,6 +92,8 @@ creativefitting-brand/
 
 ## Usage
 - **Wide layouts** → the primary wordmark (`assets/source/wordmark.svg`).
+- **Dotted-i alternative** → the parallel wordmark and adaptive assets under
+  `assets/wordmarks/` and `assets/alternate/`.
 - **One-colour print / fabrication** → an approved SVG from `assets/wordmarks/`.
 - **Square / round slots** → a two-line or emblem mark from `assets/png/`.
 - **≤ 32 px** → the bulb (`favicon-64.png` / `bulb.svg`).
@@ -89,6 +109,12 @@ Regenerate the wordmark SVG set with:
 
 ```bash
 python3 assets/source/build_wordmark_variants.py
+```
+
+Regenerate the dotted-i adaptive PNG family with:
+
+```bash
+python3 assets/source/build.py alternate
 ```
 
 *Marks derived from the original CreativeFitting artwork · 2026.*

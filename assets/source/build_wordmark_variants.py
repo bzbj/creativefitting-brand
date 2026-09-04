@@ -33,11 +33,15 @@ def add_title(svg: str, title: str) -> str:
     return SVG_OPEN.sub(rf"\1\n<title>{title}</title>", svg, count=1)
 
 
-def build_solid(master: str, name: str, colour: str) -> str:
+def build_solid(
+    master: str, name: str, colour: str, expected_painted_shapes: int = 21
+) -> str:
     """Replace every painted gradient path with a single process-safe fill."""
     variant, count = GRADIENT_FILL.subn(f'fill="{colour}"', master)
-    if count != 21:
-        raise RuntimeError(f"Expected 21 painted paths; found {count}")
+    if count != expected_painted_shapes:
+        raise RuntimeError(
+            f"Expected {expected_painted_shapes} painted shapes; found {count}"
+        )
     variant, definition_count = GRADIENT_DEFINITION.subn("", variant)
     if definition_count != 21:
         raise RuntimeError(
@@ -71,10 +75,23 @@ def main() -> None:
         output = OUTPUT_DIR / f"wordmark-solid-{name}.svg"
         output.write_text(build_solid(master, name, colour), encoding="utf-8")
 
+    dotted_svg = build_dotted_i(master)
     dotted = OUTPUT_DIR / "wordmark-dotted-i.svg"
-    dotted.write_text(build_dotted_i(master), encoding="utf-8")
+    dotted.write_text(dotted_svg, encoding="utf-8")
 
-    print(f"Wrote {len(SOLID_COLOURS) + 1} variants to {OUTPUT_DIR}")
+    for name, colour in SOLID_COLOURS.items():
+        output = OUTPUT_DIR / f"wordmark-dotted-i-solid-{name}.svg"
+        output.write_text(
+            build_solid(
+                dotted_svg,
+                f"dotted-i {name}",
+                colour,
+                expected_painted_shapes=23,
+            ),
+            encoding="utf-8",
+        )
+
+    print(f"Wrote {len(SOLID_COLOURS) * 2 + 1} variants to {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

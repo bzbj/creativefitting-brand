@@ -140,6 +140,20 @@
   .alternate-meta p{max-width:700px;color:var(--slate);font-size:15px}
   .alternate-meta strong{color:var(--ink)}
   .alternate-meta .asset-link{margin-top:0;white-space:nowrap}
+  .asset-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px 20px}
+  .alternate-family{margin-top:72px;padding-top:64px;border-top:1px solid var(--line)}
+  .family-title{font-size:27px;font-weight:600;letter-spacing:-.01em;margin-top:10px}
+  .family-copy{max-width:720px;margin-top:12px;color:var(--slate);font-size:16px}
+  .family-subtitle{font-size:18px;font-weight:600;margin-top:42px}
+  .family-hint{margin-top:5px;color:var(--slate);font-size:13px}
+  .alternate-solids{margin-top:20px}
+  .alternate-solids .solid-preview{height:180px}
+  .icon-download{display:block;border-radius:9px;line-height:0;transition:transform .18s ease,box-shadow .18s ease}
+  .icon-download:hover{transform:translateY(-2px);box-shadow:0 12px 24px -18px rgba(20,80,180,.7)}
+  .icon-download:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+  .shared-note{display:flex;gap:14px;align-items:flex-start;margin-top:22px;padding:18px 20px;border:1px solid var(--line);
+    border-radius:14px;background:rgba(255,255,255,.75);color:var(--slate);font-size:14px}
+  .shared-note strong{color:var(--ink);white-space:nowrap}
 
   footer{background:var(--ink);color:#95a0b2;text-align:center;padding:56px 0}
   footer img{width:230px;filter:brightness(0) invert(1);opacity:.95}
@@ -152,8 +166,12 @@
     .wrap{padding:0 22px}
     .solid-preview{height:190px}
     .alternate-meta{align-items:flex-start;flex-direction:column;gap:14px}
+    .asset-actions{justify-content:flex-start}
     .alternate-stage{padding:56px 22px}
     .alternate-stage img{width:100%}
+    .alternate-family{margin-top:56px;padding-top:50px}
+    .alternate-solids .solid-preview{height:170px}
+    .shared-note{flex-direction:column;gap:4px}
     .print-note{flex-direction:column;gap:4px}
     .type-card{padding:28px}
     .type-card .big{font-size:clamp(36px,10vw,44px)}
@@ -389,7 +407,107 @@
     <div class="alternate-meta">
       <p><strong>What changed:</strong> two circular dots, matched to the existing stem weight and aligned with the
         nearby ascenders. Letterforms, spacing, gradient, and bulb artwork remain untouched.</p>
-      <a class="asset-link" href="assets/wordmarks/wordmark-dotted-i.svg" download>Download alternate SVG</a>
+      <div class="asset-actions">
+        <a class="asset-link" href="assets/wordmarks/wordmark-dotted-i.svg" download>Gradient SVG</a>
+        <a class="asset-link" href="assets/alternate/wordmark-dotted-i.png" download>Transparent PNG</a>
+      </div>
+    </div>
+
+    <div class="alternate-family">
+      <div class="eyebrow">Complete Alternative System</div>
+      <h3 class="family-title">One dotted-i family, every format</h3>
+      <p class="family-copy">The restored dots now carry across the production wordmark, stacked name, and emblem.
+        This is a parallel alternative family; every original dotless mark shown above remains available and unchanged.</p>
+
+      <h3 class="family-subtitle">One-colour wordmark</h3>
+      <p class="family-hint">The same print-safe blue, knockout white, and monochrome black treatments.</p>
+      <div class="solid-grid alternate-solids">
+        <article class="solid-card">
+          <div class="solid-preview blue"><img src="assets/wordmarks/wordmark-dotted-i-solid-blue.svg" alt="Dotted-i solid blue CreativeFitting wordmark" /></div>
+          <div class="solid-meta">
+            <div class="solid-name">Dotted-i · Solid blue</div>
+            <div class="solid-spec">HEX #1A85EC · One-colour production</div>
+            <a class="asset-link" href="assets/wordmarks/wordmark-dotted-i-solid-blue.svg" download>Download SVG</a>
+          </div>
+        </article>
+        <article class="solid-card">
+          <div class="solid-preview white"><img src="assets/wordmarks/wordmark-dotted-i-solid-white.svg" alt="Dotted-i solid white CreativeFitting wordmark" /></div>
+          <div class="solid-meta">
+            <div class="solid-name">Dotted-i · Solid white</div>
+            <div class="solid-spec">Knockout white · Dark solid grounds</div>
+            <a class="asset-link" href="assets/wordmarks/wordmark-dotted-i-solid-white.svg" download>Download SVG</a>
+          </div>
+        </article>
+        <article class="solid-card">
+          <div class="solid-preview black"><img src="assets/wordmarks/wordmark-dotted-i-solid-black.svg" alt="Dotted-i solid black CreativeFitting wordmark" /></div>
+          <div class="solid-meta">
+            <div class="solid-name">Dotted-i · Solid black</div>
+            <div class="solid-spec">100% K · Monochrome reproduction</div>
+            <a class="asset-link" href="assets/wordmarks/wordmark-dotted-i-solid-black.svg" download>Download SVG</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="arow">
+        <h3>Dotted-i two-line wordmark <span class="tag">name, stacked</span></h3>
+        <p class="family-hint">Select any mark to download the 1024 px production PNG.</p>
+        <div class="icons" style="margin-top:16px">
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/twoline-square-light-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/twoline-square-light-512.png" alt="Dotted-i two-line wordmark, light square" /></a>
+            <figcaption>Square · Light</figcaption>
+          </figure>
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/twoline-circle-light-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/twoline-circle-light-512.png" alt="Dotted-i two-line wordmark, light circle" /></a>
+            <figcaption>Circle · Light</figcaption>
+          </figure>
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/twoline-square-blue-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/twoline-square-blue-512.png" alt="Dotted-i two-line wordmark, blue square" /></a>
+            <figcaption>Square · Blue</figcaption>
+          </figure>
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/twoline-circle-blue-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/twoline-circle-blue-512.png" alt="Dotted-i two-line wordmark, blue circle" /></a>
+            <figcaption>Circle · Blue</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="arow">
+        <h3>Dotted-i emblem <span class="tag">bulb + name</span></h3>
+        <p class="family-hint">The hero bulb and inline bulb are unchanged; only the two text dots are restored.</p>
+        <div class="icons" style="margin-top:16px">
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/emblem-square-light-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/emblem-square-light-512.png" alt="Dotted-i emblem, light square" /></a>
+            <figcaption>Square · Light</figcaption>
+          </figure>
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/emblem-circle-light-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/emblem-circle-light-512.png" alt="Dotted-i emblem, light circle" /></a>
+            <figcaption>Circle · Light</figcaption>
+          </figure>
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/emblem-square-blue-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/emblem-square-blue-512.png" alt="Dotted-i emblem, blue square" /></a>
+            <figcaption>Square · Blue</figcaption>
+          </figure>
+          <figure>
+            <a class="icon-download" href="assets/alternate/png/emblem-circle-blue-1024.png" download title="Download 1024 px PNG"><img src="assets/alternate/png/emblem-circle-blue-512.png" alt="Dotted-i emblem, blue circle" /></a>
+            <figcaption>Circle · Blue</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="arow">
+        <h3>Compact bulb <span class="tag">shared / unchanged</span></h3>
+        <div class="icons">
+          <figure><img src="assets/png/bulb-square-light-512.png" alt="Shared bulb icon, light square" /><figcaption>Square · Light</figcaption></figure>
+          <figure><img src="assets/png/bulb-circle-light-512.png" alt="Shared bulb icon, light circle" /><figcaption>Circle · Light</figcaption></figure>
+          <figure><img src="assets/png/bulb-square-blue-512.png" alt="Shared bulb icon, blue square" /><figcaption>Square · Blue</figcaption></figure>
+          <figure><img src="assets/png/bulb-circle-blue-512.png" alt="Shared bulb icon, blue circle" /><figcaption>Circle · Blue</figcaption></figure>
+        </div>
+        <div class="shared-note">
+          <strong>Why it is shared</strong>
+          <span>The compact mark contains no letterforms, so adding i dots cannot change it. Both logo families use
+            the exact same supplied bulb artwork rather than creating a redundant duplicate.</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

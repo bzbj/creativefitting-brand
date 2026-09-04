@@ -52,6 +52,25 @@
   .two-up .mark-stage{margin-top:0;padding:54px 30px}
   .two-up .mark-stage img{width:88%}
 
+  /* SOLID-COLOUR WORDMARKS */
+  .solid{background:var(--mist)}
+  .solid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+  .solid-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}
+  .solid-preview{height:210px;display:flex;align-items:center;justify-content:center;padding:34px}
+  .solid-preview img{display:block;width:100%}
+  .solid-preview.blue{background:#fff}
+  .solid-preview.white{background:var(--blue)}
+  .solid-preview.black{background:#F4F1EB}
+  .solid-meta{padding:20px 22px 22px;border-top:1px solid var(--line)}
+  .solid-name{font-family:'Quicksand';font-size:18px;font-weight:600}
+  .solid-spec{margin-top:4px;color:var(--slate);font-size:13px;letter-spacing:.03em}
+  .asset-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--blue-ink);font-size:12px;
+    font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+  .asset-link::after{content:"↓";font-size:15px;line-height:1}
+  .print-note{display:flex;gap:16px;align-items:flex-start;margin-top:22px;padding:18px 20px;border:1px solid #CFE1F7;
+    border-radius:14px;background:#fff;color:var(--slate);font-size:14px}
+  .print-note strong{color:var(--ink);white-space:nowrap}
+
   /* IDEA */
   .idea{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;margin-top:52px}
   .idea .bulbcard{background:var(--mist);border:1px solid var(--line);border-radius:24px;padding:56px;display:flex;justify-content:center}
@@ -112,15 +131,34 @@
   .dd li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--line)}
   .dd .do li::before{background:#1FA971} .dd .no li::before{background:#E5484D}
 
+  /* DOTTED-I ALTERNATE */
+  .alternate{padding-bottom:104px;background:linear-gradient(180deg,#fff 0%,#F7FAFE 100%)}
+  .alternate-stage{margin-top:44px;border:1px solid var(--line);border-radius:24px;background:#fff;
+    box-shadow:0 34px 70px -50px rgba(20,80,180,.45);padding:84px 42px;display:flex;justify-content:center}
+  .alternate-stage img{display:block;width:min(700px,88%)}
+  .alternate-meta{display:flex;justify-content:space-between;gap:30px;align-items:center;margin-top:22px}
+  .alternate-meta p{max-width:700px;color:var(--slate);font-size:15px}
+  .alternate-meta strong{color:var(--ink)}
+  .alternate-meta .asset-link{margin-top:0;white-space:nowrap}
+
   footer{background:var(--ink);color:#95a0b2;text-align:center;padding:56px 0}
   footer img{width:230px;filter:brightness(0) invert(1);opacity:.95}
   footer .fine{margin-top:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
   footer a{color:var(--sky);text-decoration:none}
 
   @media(max-width:860px){
-    .idea,.sw-grid,.rules,.dd,.two-up{grid-template-columns:1fr}
+    .idea,.sw-grid,.rules,.dd,.two-up,.solid-grid{grid-template-columns:1fr}
     .sw-grid{grid-template-columns:1fr 1fr}
     .wrap{padding:0 22px}
+    .solid-preview{height:190px}
+    .alternate-meta{align-items:flex-start;flex-direction:column;gap:14px}
+    .alternate-stage{padding:56px 22px}
+    .alternate-stage img{width:100%}
+    .print-note{flex-direction:column;gap:4px}
+    .type-card{padding:28px}
+    .type-card .big{font-size:clamp(36px,10vw,44px)}
+    .type-card .row{align-items:flex-start;flex-direction:column;gap:5px}
+    .type-card .w{width:auto}
   }
 </style>
 </head>
@@ -132,7 +170,7 @@
     <div class="badge">Brand Guidelines</div>
     <img src="assets/source/wordmark.svg" alt="CreativeFitting logo" />
     <p>The official CreativeFitting wordmark &mdash; and a set of compact marks for square &amp; circular spaces.</p>
-    <span class="chip">Logo · Colour · Adaptive Icons</span>
+    <span class="chip">Logo · Solid Colour · Adaptive Icons</span>
   </div>
 </header>
 
@@ -147,6 +185,50 @@
     <div class="two-up">
       <div class="mark-stage"><img src="assets/source/wordmark.svg" alt="on white" /></div>
       <div class="mark-stage dark"><img src="assets/source/wordmark.svg" alt="reversed on blue" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLID-COLOUR WORDMARKS -->
+<section id="solid" class="solid">
+  <div class="wrap">
+    <div class="eyebrow">Production Colours</div>
+    <h2 class="stitle">One colour, press ready</h2>
+    <p class="lead">When gradients are impractical — offset print, screen print, embroidery, engraving, vinyl,
+      stamps, or single-ink packaging — use one of these approved solid versions. Never approximate the gradient
+      with halftones.</p>
+
+    <div class="solid-grid">
+      <article class="solid-card">
+        <div class="solid-preview blue"><img src="assets/wordmarks/wordmark-solid-blue.svg" alt="Solid blue CreativeFitting wordmark" /></div>
+        <div class="solid-meta">
+          <div class="solid-name">Solid blue</div>
+          <div class="solid-spec">HEX #1A85EC · RGB 26 / 133 / 236</div>
+          <a class="asset-link" href="assets/wordmarks/wordmark-solid-blue.svg" download>Download SVG</a>
+        </div>
+      </article>
+      <article class="solid-card">
+        <div class="solid-preview white"><img src="assets/wordmarks/wordmark-solid-white.svg" alt="Solid white CreativeFitting wordmark" /></div>
+        <div class="solid-meta">
+          <div class="solid-name">Solid white</div>
+          <div class="solid-spec">Knockout white · For dark solid grounds</div>
+          <a class="asset-link" href="assets/wordmarks/wordmark-solid-white.svg" download>Download SVG</a>
+        </div>
+      </article>
+      <article class="solid-card">
+        <div class="solid-preview black"><img src="assets/wordmarks/wordmark-solid-black.svg" alt="Solid black CreativeFitting wordmark" /></div>
+        <div class="solid-meta">
+          <div class="solid-name">Solid black</div>
+          <div class="solid-spec">100% K · For monochrome reproduction</div>
+          <a class="asset-link" href="assets/wordmarks/wordmark-solid-black.svg" download>Download SVG</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="print-note">
+      <strong>Print starting point</strong>
+      <span>For process printing, solid blue is approximately CMYK 89 / 44 / 0 / 7. Profiles, paper, and inks vary;
+        always approve a physical proof with the printer.</span>
     </div>
   </div>
 </section>
@@ -276,6 +358,7 @@
         <ul>
           <li>Use the wordmark on white or a quiet light ground.</li>
           <li>Reverse to solid white on the brand blue.</li>
+          <li>Use the approved solid blue, white, or black artwork for one-colour production.</li>
           <li>Reach for an adaptive mark whenever the space is square or round.</li>
           <li>Give it room — respect the clear space.</li>
         </ul>
@@ -284,11 +367,29 @@
         <div class="h"><span class="badge">✕</span> Don’t</div>
         <ul>
           <li>Stretch, condense, or rotate the logo.</li>
-          <li>Recolour it or drop the gradient for a flat off-brand blue.</li>
+          <li>Sample an arbitrary blue or manually recolour the supplied one-colour files.</li>
           <li>Add shadows, outlines, or squeeze it into a tight box.</li>
           <li>Rebuild the bulb — use the supplied artwork.</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOTTED-I ALTERNATE — intentionally the final content section -->
+<section id="dotted-i" class="alternate">
+  <div class="wrap">
+    <div class="eyebrow">Alternate Wordmark</div>
+    <h2 class="stitle">The dots, restored</h2>
+    <p class="lead">A legibility-led alternate adds conventional dots above the <em>i</em> in “Creative” and the
+      first <em>i</em> in “Fitting”. The lightbulb stays exactly where it is, preserving the signature idea.</p>
+    <div class="alternate-stage">
+      <img src="assets/wordmarks/wordmark-dotted-i.svg" alt="CreativeFitting wordmark with two restored i dots" />
+    </div>
+    <div class="alternate-meta">
+      <p><strong>What changed:</strong> two circular dots, matched to the existing stem weight and aligned with the
+        nearby ascenders. Letterforms, spacing, gradient, and bulb artwork remain untouched.</p>
+      <a class="asset-link" href="assets/wordmarks/wordmark-dotted-i.svg" download>Download alternate SVG</a>
     </div>
   </div>
 </section>

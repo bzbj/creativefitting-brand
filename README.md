@@ -1,10 +1,14 @@
-# CreativeFitting — Brand Guidelines & Adaptive Marks
+# CreativeFitting — Two Brand Guides & Adaptive Marks
 
-A mini brand-guideline page for the **existing** CreativeFitting logo, approved
-**one-colour production variants**, and two parallel adaptive families: the
-original dotless system plus a dotted-`i` alternative.
+A pair of independent brand-guideline pages for the CreativeFitting logo. Each
+guide contains its own wide wordmarks, approved **one-colour production
+variants**, adaptive marks, usage guidance, and downloads:
 
-> Open **`index.html`** in a browser (or view the deployed page) for the full guideline.
+- **`index.html`** — original logo system, with the two letter `i` dots omitted.
+- **`dotted-i.html`** — dotted-`i` logo system, with those two dots restored.
+
+The small switcher at the top of either page moves between the two guides. Keep
+one system consistent within an application rather than mixing the two.
 
 ## Why this exists
 The primary wordmark is ~**8.75 : 1** — beautiful, but far too wide for an app icon, avatar,
@@ -56,7 +60,8 @@ than duplicated. All original dotless assets remain in place and unchanged.
 ## File map
 ```
 creativefitting-brand/
-├─ index.html                     ← the guideline page (start here)
+├─ index.html                     ← original dotless-logo brand guide
+├─ dotted-i.html                  ← dotted-i logo brand guide
 ├─ README.md
 └─ assets/
    ├─ source/
@@ -91,11 +96,12 @@ creativefitting-brand/
 | Paper | `#FFFFFF` | backgrounds |
 
 ## Usage
-- **Wide layouts** → the primary wordmark (`assets/source/wordmark.svg`).
-- **Dotted-i alternative** → the parallel wordmark and adaptive assets under
-  `assets/wordmarks/` and `assets/alternate/`.
+- **Original guide** → open `index.html`; use `assets/source/wordmark.svg`,
+  the dotless solid wordmarks, and the adaptive assets under `assets/png/`.
+- **Dotted-i guide** → open `dotted-i.html`; use the dotted wordmarks under
+  `assets/wordmarks/` and text-bearing adaptive assets under `assets/alternate/`.
 - **One-colour print / fabrication** → an approved SVG from `assets/wordmarks/`.
-- **Square / round slots** → a two-line or emblem mark from `assets/png/`.
+- **Square / round slots** → the two-line or emblem marks linked by the selected guide.
 - **≤ 32 px** → the bulb (`favicon-64.png` / `bulb.svg`).
 - Reverse to white by placing the blue art on the brand gradient (the light/blue PNG pairs
   already provide both; in CSS, `filter: brightness(0) invert(1)` turns the wordmark white).

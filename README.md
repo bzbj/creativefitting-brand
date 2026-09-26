@@ -86,14 +86,14 @@ creativefitting-brand/
 ```
 
 ## Colour
-| Token | Value | Use |
-|-------|-------|-----|
-| Brand Gradient | `#2091F7 → #116BCA` | the logo & primary surfaces (left→right) |
-| Solid Blue | `#1A85EC` | approved one-colour logo; RGB 26/133/236 |
-| Deep | `#0A63C4` | shadows, active states |
-| Sky | `#B7DDFE` | tints, highlights |
-| Ink | `#14181F` | text |
-| Paper | `#FFFFFF` | backgrounds |
+| Token | HEX | RGB | Use |
+|-------|-----|-----|-----|
+| Brand Gradient | `#2091F7 → #116BCA` | `RGB(32, 145, 247) → RGB(17, 107, 202)` | the logo & primary surfaces (left→right) |
+| Solid Blue | `#1A85EC` | `RGB(26, 133, 236)` | approved one-colour logo |
+| Deep | `#0A63C4` | `RGB(10, 99, 196)` | shadows, active states |
+| Sky | `#B7DDFE` | `RGB(183, 221, 254)` | tints, highlights |
+| Ink | `#14181F` | `RGB(20, 24, 31)` | text |
+| Paper | `#FFFFFF` | `RGB(255, 255, 255)` | backgrounds |
 
 ## Usage
 - **Original guide** → open `index.html`; use `assets/source/wordmark.svg`,
